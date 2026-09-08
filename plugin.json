@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dbpostgres",
+  "version": "1.0.0",
+  "description": "Consulta bases de datos PostgreSQL desde Kiro con @microsoft/postgres-mcp. Solo-lectura por defecto, con proteccion para tablas grandes; no lee archivos .env ni product.md.",
+  "author": {
+    "name": "Yoel Moreno",
+    "url": "https://github.com/yomo07"
+  },
+  "keywords": [
+    "sql",
+    "postgres",
+    "postgresql",
+    "database",
+    "base de datos",
+    "consulta",
+    "query",
+    "esquema",
+    "schema",
+    "tabla",
+    "table"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/yomo07/dbpostgrespowerkiro"
+}
