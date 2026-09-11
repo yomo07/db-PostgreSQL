@@ -41,7 +41,7 @@ A diferencia de los Powers de MySQL y SQL Server (que usan cinco variables separ
 
 | Variable del sistema | Variable interna del paquete |
 |---|---|
-| `PGPOWER_DSN` | `PGSQL_MCP_CONNECTION_STRING` |
+| `PGPOWER_DSN` | `POSTGRES_MCP_CONNECTION_STRING` |
 
 Formato (libpq URI): `postgresql://usuario:contraseña@host:puerto/base`
 
@@ -67,7 +67,7 @@ if defined PGPOWER_DSN (echo Definida) else (echo NO definida)
 
 `@microsoft/postgres-mcp` normalmente guarda las conexiones en el **keyring del sistema operativo**, mediante su propia CLI (`connection add` + `connection set-password`), sin que la credencial pase por ningún archivo de configuración. Ese es su modo recomendado y el más seguro.
 
-Este Power usa a propósito su **modo alternativo pensado para CI/headless**: la variable `PGSQL_MCP_CONNECTION_STRING` crea un perfil de conexión implícito al arrancar, junto con `PGSQL_MCP_PROFILE_NAME` para nombrarlo (ya viene fijo en el `mcp.json`, no hace falta definirlo). Se eligió así porque es lo que permite configurar el Power con una variable de entorno, de forma consistente con los otros Powers de base de datos.
+Este Power usa a propósito su **modo alternativo pensado para CI/headless**: la variable `POSTGRES_MCP_CONNECTION_STRING` crea un perfil de conexión implícito al arrancar, junto con `POSTGRES_MCP_PROFILE_NAME` para nombrarlo (ya viene fijo en el `mcp.json`, no hace falta definirlo). Se eligió así porque es lo que permite configurar el Power con una variable de entorno, de forma consistente con los otros Powers de base de datos.
 
 La contrapartida a tener presente: en este modo la credencial vive en el entorno del proceso, no en el keyring. Si preferís la protección del keyring, podés usar la CLI del paquete directamente en vez de este Power.
 

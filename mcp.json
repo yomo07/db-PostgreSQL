@@ -6,8 +6,8 @@
       "command": "npx",
       "args": ["-y", "@microsoft/postgres-mcp", "run"],
       "env": {
-        "PGSQL_MCP_CONNECTION_STRING": "${PGPOWER_DSN}",
-        "PGSQL_MCP_PROFILE_NAME": "dbpostgres"
+        "POSTGRES_MCP_CONNECTION_STRING": "${PGPOWER_DSN}",
+        "POSTGRES_MCP_PROFILE_NAME": "dbpostgres"
       }
     }
   }

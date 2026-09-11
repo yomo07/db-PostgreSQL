@@ -36,7 +36,7 @@ A diferencia de los Powers de MySQL y SQL Server (que usan cinco variables separ
 
 | Variable del sistema | Variable interna del paquete |
 |---|---|
-| `PGPOWER_DSN` | `PGSQL_MCP_CONNECTION_STRING` |
+| `PGPOWER_DSN` | `POSTGRES_MCP_CONNECTION_STRING` |
 
 Formato (libpq URI): `postgresql://usuario:contraseña@host:puerto/base`
 
@@ -46,7 +46,7 @@ Si la contraseña tiene caracteres especiales (`@`, `:`, `/`, `#`, `?`), rompen 
 
 `@microsoft/postgres-mcp` normalmente guarda las conexiones en el **keyring del sistema operativo**, mediante su propia CLI, sin que la credencial pase por ningún archivo. Ese es su modo recomendado y el más seguro.
 
-Este Power usa a propósito su **modo alternativo para CI/headless** (`PGSQL_MCP_CONNECTION_STRING`), que crea un perfil de conexión implícito al arrancar. Se eligió así porque es lo que permite configurarlo con una variable de entorno, de forma consistente con los otros Powers de base de datos.
+Este Power usa a propósito su **modo alternativo para CI/headless** (`POSTGRES_MCP_CONNECTION_STRING`), que crea un perfil de conexión implícito al arrancar. Se eligió así porque es lo que permite configurarlo con una variable de entorno, de forma consistente con los otros Powers de base de datos.
 
 La contrapartida: en este modo la credencial vive en el entorno del proceso, no en el keyring. Si preferís la protección del keyring, podés usar la CLI del paquete directamente en vez de este Power.
 
@@ -104,7 +104,7 @@ Si hay duda sobre una consulta, revisa el plan con `EXPLAIN` — **nunca `EXPLAI
 
 ## Múltiples bases PostgreSQL
 
-Este Power trae una sola conexión configurada. Si hace falta una segunda (por ejemplo, desarrollo y producción), se duplica el bloque `postgres` en el `mcp.json` del paquete con otro nombre de entrada, otra variable y otro `PGSQL_MCP_PROFILE_NAME` — es un cambio del Power en sí, no algo que se alterne en tiempo de uso.
+Este Power trae una sola conexión configurada. Si hace falta una segunda (por ejemplo, desarrollo y producción), se duplica el bloque `postgres` en el `mcp.json` del paquete con otro nombre de entrada, otra variable y otro `POSTGRES_MCP_PROFILE_NAME` — es un cambio del Power en sí, no algo que se alterne en tiempo de uso.
 
 ## Problemas conocidos
 
@@ -121,8 +121,8 @@ Este Power trae una sola conexión configurada. Si hace falta una segunda (por e
 
   ```jsonc
   "env": {
-    "PGSQL_MCP_CONNECTION_STRING": "postgresql://tuusuarioaqui:tupasswordaqui@tuhostaqui:5432/tubasedatosaqui",
-    "PGSQL_MCP_PROFILE_NAME": "dbpostgres"
+    "POSTGRES_MCP_CONNECTION_STRING": "postgresql://tuusuarioaqui:tupasswordaqui@tuhostaqui:5432/tubasedatosaqui",
+    "POSTGRES_MCP_PROFILE_NAME": "dbpostgres"
   }
   ```
 
